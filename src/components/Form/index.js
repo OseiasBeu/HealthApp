@@ -23,6 +23,10 @@ export default function Form(){
                 />
 
             </View>
+
+            {/* <ResultImc
+            messageResultImc={messageImc} ResultImc={imc}
+            /> */}
         </View>
     );
 }
