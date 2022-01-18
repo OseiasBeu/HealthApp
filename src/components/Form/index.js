@@ -42,17 +42,21 @@ function validatorImc(){
         setMessageImc("Seu imc é igual:")
         setTextButton("Calcular Novamente")
         setErrorMessage(null)        
-        return
-    }
+    }else{
     verificationImc()
     setImc(null)
     setTextButton("Calcular")
     setMessageImc('Preencha o peso e altura')
+
+    }
+    
     
 }
     return(
-        <Pressable onPress={Keyboard.dismiss} style={styles.formContext}>
-            <View style={styles.form}>
+        // <Pressable onPress={Keyboard.dismiss} style={styles.formContext}>
+            <View style={styles.formContext}>
+                {imc == null ?
+                <Pressable onPress={Keyboard.dismiss} style={styles.form}>
                 <Text style={styles.formLabel}>Altura</Text>
                 <Text style={styles.errorMessage}>{errorMessage}</Text>
                 <TextInput
@@ -84,11 +88,18 @@ function validatorImc(){
                     <Text style={styles.textButtonCalculator}>{textButton}</Text>
                 </TouchableOpacity>
 
+            </Pressable>
+            :
+            <View style={styles.exibitionResultImc}>
+            <ResultImc messageResultImc={messageImc} ResultImc={imc}/>
+             <TouchableOpacity
+                style={styles.ButtonCalculator}
+                onPress={() => {validatorImc()}}
+                >
+                <Text style={styles.textButtonCalculator}>{textButton}</Text>
+                </TouchableOpacity>
             </View>
-
-            <ResultImc
-            messageResultImc={messageImc} ResultImc={imc}
-            />
-        </Pressable>
+            }
+        </View>
     );
 }
