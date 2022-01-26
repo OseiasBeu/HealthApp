@@ -107,6 +107,7 @@ function validatorImc(){
             </View>
             }
             <FlatList
+            showsVerticalScrollIndicator={false}
             style={styles.listImcs}
             data={imcList.reverse()}
             renderItem={({item}) =>{
